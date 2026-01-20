@@ -1,50 +1,38 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Static Web App Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Static-First Delivery
+All content MUST be served as static HTML, CSS, and JavaScript. Server-side rendering is prohibited. Dynamic functionality MUST be handled exclusively through client-side JavaScript. Content updates require rebuilding and redeployment—no server-side state.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Progressive Enhancement
+Core functionality MUST work without JavaScript. Interactive features MUST enhance—not replace—baseline HTML functionality. Users with JavaScript disabled receive a functional, read-only experience. Graceful degradation is non-negotiable.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Performance & Optimization
+All assets MUST be optimized for fast delivery: minified CSS/JS, compressed images, lazy-loading for media, and cache-busting headers. Target: page load under 2 seconds on 4G networks. No bloat dependencies—prefer vanilla JS over frameworks when possible.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Accessibility & SEO
+All content MUST be semantically correct HTML with proper heading hierarchy (h1→h6), alt text on images, ARIA labels where needed, and keyboard navigation support. Meta tags, Open Graph, and structured data MUST be present. Pages MUST pass WCAG 2.1 AA standards.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Build & Deployment Pipeline
+Source lives in version control. Build process MUST be automated: lint, optimize, and generate static outputs. Deployments MUST be idempotent and reversible. All built artifacts committed or hosted on CDN with immutable URLs.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technical Constraints
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- **Technology Stack**: HTML5, CSS3, vanilla JavaScript (ES6+). No server-side code or backend API dependencies required.
+- **Hosting**: Static hosting platform (e.g., Azure Static Web Apps, Netlify, GitHub Pages, S3+CloudFront).
+- **Build Tool**: Specify preferred tool (e.g., Hugo, Jekyll, Vite, webpack) or mark as decision pending.
+- **No Runtime Dependencies**: Third-party libraries MUST be vetted for size and security; vendor dependencies locked in version control or via CDN with SRI hashes.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- All work tracked in version control with feature branches.
+- Pull requests MUST include: build output validation, lighthouse performance report (>90 score), and accessibility audit results.
+- Automated checks (linting, minification, broken link detection) MUST pass before merge.
+- Deployment MUST be automated from main branch; manual rollback procedure documented.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices for this project. Amendments require documentation and ratification by project stakeholders. Compliance is verified during PR review—all code MUST align with the principles above. Violations MUST be escalated or waived explicitly.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-01-20 | **Last Amended**: 2026-01-20
